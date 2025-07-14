@@ -23,8 +23,16 @@ public class RegistroController : Controller
     [HttpPost]
     [ValidateAntiForgeryToken]
     public async Task<IActionResult> CreateAsync(RegistroViewModel form)
-    {
+    {       
+
         if (!ModelState.IsValid) return View("Index", form);
+
+        var idade = DateTime.Today.Year - form.Nascimento.Year;
+        if (idade < 18)
+        {
+            ModelState.AddModelError("Nascimento", "Obrigatório ter mais de 18 anos.");
+            return View("Index", form);
+        }
 
         var cliente = new Cliente(form.Nome, form.Email, form.CPF)
         {
