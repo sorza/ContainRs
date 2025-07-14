@@ -14,7 +14,7 @@ namespace ContainRs.Application.UseCases
 
         public UnidadeFederativa? Estado { get; }
 
-        public async Task<IEnumerable<Cliente>> ExecutarAsync(IClienteRepository repository)
+        public async Task<IEnumerable<Cliente>> ExecutarAsync()
         {
             if(Estado is not null)            
                 return await repository.GetAsync(c => c.Estado == Estado);            

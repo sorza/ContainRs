@@ -1,8 +1,9 @@
-﻿using ContainRs.WebApp.Data;
-using ContainRs.WebApp.Models;
+﻿using Azure.Core;
 using ContainRs.Application.UseCases;
-using Microsoft.AspNetCore.Mvc;
 using ContainRs.Domain.Models;
+using ContainRs.WebApp.Data;
+using ContainRs.WebApp.Models;
+using Microsoft.AspNetCore.Mvc;
 
 namespace ContainRs.WebApp.Controllers;
 
@@ -40,7 +41,7 @@ public class RegistroController : Controller
            form.Complemento,
            form.Bairro,
            form.Municipio,
-           form.Estado);
+           UfStringConverter.From(form.Estado));
 
         await useCase.ExecutarAsync();
 

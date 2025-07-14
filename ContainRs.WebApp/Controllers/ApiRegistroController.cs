@@ -13,7 +13,7 @@ namespace ContainRs.WebApp.Controllers
         [HttpPost]
         public async Task<IActionResult> CreateAsync(RegistroViewModel request)
         {         
-            RegistrarCliente? useCase = new RegistrarCliente(context, request.Nome, new Email(request.Email), request.CPF, request.Celular, request.CEP, request.Rua, request.Numero, request.Complemento, request.Bairro, request.Municipio, request.Estado);
+            RegistrarCliente? useCase = new RegistrarCliente(context, request.Nome, new Email(request.Email), request.CPF, request.Celular, request.CEP, request.Rua, request.Numero, request.Complemento, request.Bairro, request.Municipio, UfStringConverter.From(request.Estado));
 
             await useCase.ExecutarAsync();
 
