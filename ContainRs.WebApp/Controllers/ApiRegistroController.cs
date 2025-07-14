@@ -1,7 +1,8 @@
 ﻿using ContainRs.WebApp.Data;
 using ContainRs.WebApp.Models;
-using ContainRs.WebApp.UseCases;
+using ContainRs.Application.UseCases;
 using Microsoft.AspNetCore.Mvc;
+using ContainRs.Domain.Models;
 
 namespace ContainRs.WebApp.Controllers
 {
@@ -14,7 +15,7 @@ namespace ContainRs.WebApp.Controllers
         {         
             RegistrarCliente? useCase = new RegistrarCliente(context, request.Nome, new Email(request.Email), request.CPF, request.Celular, request.CEP, request.Rua, request.Numero, request.Complemento, request.Bairro, request.Municipio, request.Estado);
 
-           await useCase.ExecutarAsync();
+            await useCase.ExecutarAsync();
 
             return Ok();
         }

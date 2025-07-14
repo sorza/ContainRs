@@ -1,4 +1,4 @@
-﻿namespace ContainRs.WebApp.Models;
+﻿namespace ContainRs.Domain.Models;
 
 public class Cliente
 {
@@ -23,5 +23,5 @@ public class Cliente
     public string? Bairro { get; set; }
     public string? Municipio { get; set; }
     public string? Cidade { get; set; }
-    public string? Estado { get; set; }
+    public UnidadeFederativa? Estado { get; set; }
 }
